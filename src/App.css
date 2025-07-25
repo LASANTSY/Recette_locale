@@ -1,0 +1,9 @@
+/* Désactive tous les outlines (peut rendre le site moins accessible) */
+input:focus,
+button:focus,
+textarea:focus,
+select:focus,
+a:focus {
+  outline: none;
+  outline-width: 0;
+}
