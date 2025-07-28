@@ -1,6 +1,7 @@
 // components/Alert.tsx
 import { useState } from 'react';
 import type { ReactNode } from 'react';
+import { useTheme } from '../../../context/ThemeContext';
 
 interface AlertProps {
   variant?: 'success' | 'error' | 'warning' | 'info';
@@ -20,6 +21,7 @@ const Alert = ({
   onDismiss
 }: AlertProps) => {
   const [isVisible, setIsVisible] = useState(true);
+  const { theme } = useTheme();
 
   const handleDismiss = () => {
     setIsVisible(false);
@@ -66,20 +68,14 @@ const Alert = ({
   };
 
   return (
-    <div className={`border-l-4 p-4 rounded-md ${variantClasses[variant]} ${className}`}>
+    <div className={`border-l-4 p-4 rounded-md ${variantClasses[variant]} ${className} dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100`}>
       <div className="flex">
-        <div className={`flex-shrink-0 ${iconClasses[variant]}`}>
-          {icons[variant]}
-        </div>
+        <div className={`flex-shrink-0 ${iconClasses[variant]}`}>{icons[variant]}</div>
         <div className="ml-3 flex-1">
           {title && (
-            <h3 className="text-sm font-medium mb-1">
-              {title}
-            </h3>
+            <h3 className="text-sm font-medium mb-1 dark:text-gray-100">{title}</h3>
           )}
-          <div className="text-sm">
-            {children}
-          </div>
+          <div className="text-sm dark:text-gray-200">{children}</div>
         </div>
         {dismissible && (
           <div className="ml-auto pl-3">
@@ -87,10 +83,10 @@ const Alert = ({
               onClick={handleDismiss}
               className={`
                 inline-flex rounded-md p-1.5 focus:outline-none focus:ring-2 focus:ring-offset-2
-                ${variant === 'success' ? 'text-green-500 hover:bg-green-100 focus:ring-green-600' : ''}
-                ${variant === 'error' ? 'text-red-500 hover:bg-red-100 focus:ring-red-600' : ''}
-                ${variant === 'warning' ? 'text-yellow-500 hover:bg-yellow-100 focus:ring-yellow-600' : ''}
-                ${variant === 'info' ? 'text-blue-500 hover:bg-blue-100 focus:ring-blue-600' : ''}
+                ${variant === 'success' ? 'text-green-500 hover:bg-green-100 focus:ring-green-600 dark:hover:bg-green-900' : ''}
+                ${variant === 'error' ? 'text-red-500 hover:bg-red-100 focus:ring-red-600 dark:hover:bg-red-900' : ''}
+                ${variant === 'warning' ? 'text-yellow-500 hover:bg-yellow-100 focus:ring-yellow-600 dark:hover:bg-yellow-900' : ''}
+                ${variant === 'info' ? 'text-blue-500 hover:bg-blue-100 focus:ring-blue-600 dark:hover:bg-blue-900' : ''}
               `}
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

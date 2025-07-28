@@ -1,5 +1,6 @@
 // Badge.tsx
 import type { ReactNode } from 'react';
+import { useTheme } from '../../../context/ThemeContext';
 
 interface BadgeProps {
   children: ReactNode;
@@ -18,6 +19,7 @@ const Badge = ({
   outline = false,
   className = ''
 }: BadgeProps) => {
+  const { theme } = useTheme();
   const baseClasses = 'inline-flex items-center font-medium';
   
   const variants = {
@@ -58,7 +60,7 @@ const Badge = ({
   `.trim();
 
   return (
-    <span className={classes}>
+    <span className={classes + ' dark:bg-gray-800 dark:text-gray-100 dark:border-gray-700'}>
       {children}
     </span>
   );

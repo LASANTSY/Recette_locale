@@ -1,6 +1,7 @@
 // components/Dropdown.tsx
 import { useState, useRef, useEffect } from 'react';
 import type { ReactNode } from 'react';
+import { useTheme } from '../../../context/ThemeContext';
 
 interface DropdownItem {
   label: string;
@@ -30,6 +31,7 @@ export const Dropdown = ({
 }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -82,6 +84,7 @@ export const Dropdown = ({
         <div
           className={`
             absolute z-50 min-w-48 bg-white border border-gray-200 rounded-md shadow-lg
+            dark:bg-gray-800 dark:border-gray-700
             ${positionClasses[position]}
             ${menuClassName}
           `}
@@ -90,7 +93,7 @@ export const Dropdown = ({
             {items.map((item, index) => (
               <div key={index}>
                 {item.separator && index > 0 && (
-                  <div className="border-t border-gray-200 my-1" />
+                  <div className="border-t border-gray-200 my-1 dark:border-gray-700" />
                 )}
                 <button
                   onClick={() => handleItemClick(item)}
@@ -98,19 +101,12 @@ export const Dropdown = ({
                   className={`
                     w-full px-4 py-2 text-left text-sm transition-colors
                     ${item.disabled
-                      ? 'text-gray-400 cursor-not-allowed'
-                      : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
-                    }
+                      ? 'text-gray-400 cursor-not-allowed dark:text-gray-500'
+                      : 'text-gray-700 hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-gray-700'}
                   `}
                 >
-                  <div className="flex items-center">
-                    {item.icon && (
-                      <span className="mr-2 flex-shrink-0">
-                        {item.icon}
-                      </span>
-                    )}
-                    {item.label}
-                  </div>
+                  {item.icon && <span className="mr-2">{item.icon}</span>}
+                  {item.label}
                 </button>
               </div>
             ))}

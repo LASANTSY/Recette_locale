@@ -1,5 +1,6 @@
 // components/Card.tsx
 import type { ReactNode } from 'react';
+import { useTheme } from '../../../context/ThemeContext';
 
 interface CardProps {
   children: ReactNode;
@@ -20,6 +21,7 @@ export const Card = ({
   border = true,
   onClick
 }: CardProps) => {
+  const { theme } = useTheme();
   const baseClasses = 'bg-white rounded-lg transition-all';
   
   const paddingClasses = {
@@ -50,6 +52,7 @@ export const Card = ({
         ${borderClasses}
         ${clickableClasses}
         ${className}
+        dark:bg-gray-800 dark:text-gray-100 dark:border-gray-700
       `}
       onClick={onClick}
     >

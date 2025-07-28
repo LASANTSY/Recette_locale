@@ -1,6 +1,7 @@
 // components/Input.tsx
 import { forwardRef } from 'react';
 import type { ReactNode } from 'react';
+import { useTheme } from '../../../context/ThemeContext';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -22,6 +23,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     className = '',
     ...props
   }, ref) => {
+    const { theme } = useTheme();
     const baseClasses = 'px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors';
     const errorClasses = error ? 'border-red-500' : 'border-gray-300';
     const widthClass = fullWidth ? 'w-full' : '';
@@ -29,7 +31,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className={`${fullWidth ? 'w-full' : ''}`}>
         {label && (
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-200">
             {label}
           </label>
         )}
@@ -50,6 +52,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               ${startIcon ? 'pl-10' : ''}
               ${endIcon ? 'pr-10' : ''}
               ${className}
+              dark:bg-gray-800 dark:text-gray-100 dark:border-gray-700
             `}
             {...props}
           />
@@ -62,11 +65,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         </div>
         
         {error && (
-          <p className="mt-1 text-sm text-red-600">{error}</p>
+          <p className="mt-1 text-sm text-red-600 dark:text-red-400">{error}</p>
         )}
         
         {helperText && !error && (
-          <p className="mt-1 text-sm text-gray-500">{helperText}</p>
+          <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{helperText}</p>
         )}
       </div>
     );

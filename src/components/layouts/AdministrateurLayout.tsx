@@ -83,19 +83,19 @@ const AdministrateurLayout: React.FC = () => {
       {/* Sidebar avec transition fluide */}
       {/* En mobile, le sidebar est positionné en fixed par Sidebar.tsx, donc on ne réserve pas de largeur ici */}
       {!isMobile && (
-        <div 
-          className="flex-none transition-all duration-300 ease-in-out"
-          style={{ width: `${currentSidebarWidth}px` }}
-        >
-          <Sidebar 
-            items={sidebarItems}
-            activeItem={activeItem}
-            onItemClick={handleItemClick}
-            isCollapsed={isSidebarCollapsed}
-            onToggleCollapse={toggleSidebar}
-            // accentColor="#3b82f6"
-          />
-        </div>
+      <div 
+        className="flex-none transition-all duration-300 ease-in-out"
+        style={{ width: `${currentSidebarWidth}px` }}
+      >
+        <Sidebar 
+          items={sidebarItems}
+          activeItem={activeItem}
+          onItemClick={handleItemClick}
+          isCollapsed={isSidebarCollapsed}
+          onToggleCollapse={toggleSidebar}
+          // accentColor="#3b82f6"
+        />
+      </div>
       )}
       {isMobile && (
         <Sidebar 

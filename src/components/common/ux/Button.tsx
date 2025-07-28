@@ -1,6 +1,7 @@
 // components/Button.tsx
 import { forwardRef } from 'react';
 import type { ReactNode } from 'react';
+import { useTheme } from '../../../context/ThemeContext';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger';
@@ -21,6 +22,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     className = '',
     ...props 
   }, ref) => {
+    const { theme } = useTheme();
     const baseClasses = 'inline-flex items-center justify-center font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
     
     const variantClasses = {
@@ -43,7 +45,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={ref}
         disabled={disabled || loading}
-        className={`${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${widthClass} ${className}`}
+        className={`${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${widthClass} ${className} dark:bg-gray-800 dark:text-gray-100 dark:border-gray-700`}
         {...props}
       >
         {loading && (
