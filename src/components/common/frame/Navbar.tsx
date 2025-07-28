@@ -204,7 +204,7 @@ const Navbar: React.FC<NavbarProps> = ({
         {/* Bouton menu mobile + Message de salutation */}
         <div className="flex items-center flex-1 min-w-0">
           {/* Message de salutation avec animation améliorée */}
-          <div className="flex-1 min-w-0">
+          <div className={`flex-1 min-w-0 ${isMobile ? 'pl-14' : ''}`}>
             <div
               className={`
               flex items-center gap-2 truncate

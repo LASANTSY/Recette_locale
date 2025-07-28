@@ -97,7 +97,8 @@ const Sidebar: React.FC<SidebarProps> = ({
       {/* Sidebar */}
       <div 
         className={`
-          fixed md:relative top-0 left-0 h-full transition-all duration-300 ease-in-out z-50 flex flex-col
+          fixed md:relative top-0 left-0 h-full transition-all duration-300 ease-in-out flex flex-col
+          ${isMobileOpen && isMobile ? 'z-[110]' : 'z-50'}
           ${theme === 'dark' ? 'bg-gray-800 border-gray-800' : 'bg-white border-gray-100'}
           border-r
           ${sidebarCollapsed ? 'w-16' : 'w-64'}
