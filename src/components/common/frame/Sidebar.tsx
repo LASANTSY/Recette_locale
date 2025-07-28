@@ -74,14 +74,16 @@ const Sidebar: React.FC<SidebarProps> = ({
   return (
     <>
       {/* Bouton menu mobile */}
-      <button
-        onClick={toggleMobile}
-        className={`md:hidden fixed top-3 left-4 z-50 p-2 rounded-lg border transition-colors cursor-pointer
-          ${theme === 'dark' ? 'bg-gray-800 border-gray-700 hover:bg-gray-700 text-gray-300' : 'bg-white border-gray-200 hover:bg-gray-50 text-gray-700'}`}
-        aria-label="Toggle mobile menu"
-      >
-        <Menu size={20} className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} />
-      </button>
+      {isMobile && (
+        <button
+          onClick={toggleMobile}
+          className={`fixed top-3 left-4 z-[100] p-2 rounded-lg border transition-colors cursor-pointer
+            ${theme === 'dark' ? 'bg-gray-800 border-gray-700 hover:bg-gray-700 text-gray-300' : 'bg-white border-gray-200 hover:bg-gray-50 text-gray-700'}`}
+          aria-label="Toggle mobile menu"
+        >
+          <Menu size={20} className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} />
+        </button>
+      )}
 
       {/* Overlay mobile */}
       {isMobileOpen && (

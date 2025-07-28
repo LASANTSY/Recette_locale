@@ -1,17 +1,11 @@
-import React from 'react';
 import TableauDeBord from '../pages/admin/Dashboard';
 import Configuration from '../pages/admin/Setting';
 import Utilisateurs from '../pages/admin/User';
 import Transactions from '../pages/admin/Transaction';
 import Rapport from '../pages/admin/Report';
+import type { AppRoute } from './types';
 
-interface Route {
-  index?: boolean;
-  path?: string;
-  element: React.ReactNode;
-}
-
-const AdministrateurRoutes: Route[] = [
+const routes: AppRoute[] = [
   {
     path: '/administrateur',
     element: <TableauDeBord />,
@@ -39,4 +33,4 @@ const AdministrateurRoutes: Route[] = [
   },
 ];
 
-export default AdministrateurRoutes;
+export default routes;

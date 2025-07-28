@@ -14,12 +14,23 @@ import { ThemeProvider } from './context/ThemeContext';
 import { AuthProvider } from './context/AuthContextV2';
 import { useAuth } from './context/auth';
 
-// Import des pages administrateur
-import TableauDeBord from './pages/admin/Dashboard';
-import Configuration from './pages/admin/Setting';
-import Utilisateurs from './pages/admin/User';
-import Transactions from './pages/admin/Transaction';
-import Rapport from './pages/admin/Report';
+// Import des routes
+import type { AppRoute } from './routes/types';
+import AdministrateurRoutes from './routes/Administrateur.routes';
+import SuperAdministrateurRoutes from './routes/SuperAdministrateur.routes';
+import CaissierRoutes from './routes/Caissier.routes';
+import MaireRoutes from './routes/Maire.routes';
+import OrdonnateurRoutes from './routes/Ordonnateur.routes';
+import PercepteurRoutes from './routes/Percepteur.routes';
+import TresorierRoutes from './routes/Tresorier.routes';
+import ContribuableRoutes from './routes/Contribuable.routes';
+// import SuperAdministrateurRoutes from './routes/SuperAdministrateur.routes';
+// import CaissierRoutes from './routes/Caissier.routes';
+// import MaireRoutes from './routes/Maire.routes';
+// import OrdonnateurRoutes from './routes/Ordonnateur.routes';
+// import PercepteurRoutes from './routes/Percepteur.routes';
+// import TresorierRoutes from './routes/Tresorier.routes';
+// import ContribuableRoutes from './routes/Contribuable.routes';
 
 function AppRoutes() {
   const { user } = useAuth();
@@ -46,12 +57,14 @@ function AppRoutes() {
               </ProtectedRoute>
             }
           >
-            <Route index element={<Navigate to="/administrateur/tableau_de_bord" replace />} />
-            <Route path="tableau_de_bord" element={<TableauDeBord />} />
-            <Route path="configuration" element={<Configuration />} />
-            <Route path="utilisateurs" element={<Utilisateurs />} />
-            <Route path="transactions" element={<Transactions />} />
-            <Route path="rapport" element={<Rapport />} />
+            {AdministrateurRoutes.map((route: AppRoute, index: number) => (
+              <Route
+                key={index}
+                index={route.index}
+                path={route.path?.replace('/administrateur/', '')}
+                element={route.element}
+              />
+            ))}
           </Route>
           <Route path="*" element={<Navigate to="/administrateur/tableau_de_bord" replace />} />
         </Routes>
@@ -60,91 +73,161 @@ function AppRoutes() {
       return (
         <Routes>
           <Route 
-            path="/*" 
+            path="/super-administrateur" 
             element={
               <ProtectedRoute allowedRole="SuperAdministrateur">
                 <SuperAdministrateurLayout />
               </ProtectedRoute>
-            } 
-          />
+            }
+          >
+            {SuperAdministrateurRoutes.map((route: AppRoute, index: number) => (
+              <Route
+                key={index}
+                index={route.index}
+                path={route.path?.replace('/super-administrateur/', '')}
+                element={route.element}
+              />
+            ))}
+          </Route>
+          <Route path="*" element={<Navigate to="/super-administrateur" replace />} />
         </Routes>
       );
     case 'Caissier':
       return (
         <Routes>
           <Route 
-            path="/*" 
+            path="/caissier" 
             element={
               <ProtectedRoute allowedRole="Caissier">
                 <CaissierLayout />
               </ProtectedRoute>
-            } 
-          />
+            }
+          >
+            {CaissierRoutes.map((route: AppRoute, index: number) => (
+              <Route
+                key={index}
+                index={route.index}
+                path={route.path?.replace('/caissier/', '')}
+                element={route.element}
+              />
+            ))}
+          </Route>
+          <Route path="*" element={<Navigate to="/caissier" replace />} />
         </Routes>
       );
     case 'Maire':
       return (
         <Routes>
           <Route 
-            path="/*" 
+            path="/maire" 
             element={
               <ProtectedRoute allowedRole="Maire">
                 <MaireLayout />
               </ProtectedRoute>
-            } 
-          />
+            }
+          >
+            {MaireRoutes.map((route: AppRoute, index: number) => (
+              <Route
+                key={index}
+                index={route.index}
+                path={route.path?.replace('/maire/', '')}
+                element={route.element}
+              />
+            ))}
+          </Route>
+          <Route path="*" element={<Navigate to="/maire" replace />} />
         </Routes>
       );
     case 'Ordonnateur':
       return (
         <Routes>
           <Route 
-            path="/*" 
+            path="/ordonnateur" 
             element={
               <ProtectedRoute allowedRole="Ordonnateur">
                 <OrdonnateurLayout />
               </ProtectedRoute>
-            } 
-          />
+            }
+          >
+            {OrdonnateurRoutes.map((route: AppRoute, index: number) => (
+              <Route
+                key={index}
+                index={route.index}
+                path={route.path?.replace('/ordonnateur/', '')}
+                element={route.element}
+              />
+            ))}
+          </Route>
+          <Route path="*" element={<Navigate to="/ordonnateur" replace />} />
         </Routes>
       );
     case 'Percepteur':
       return (
         <Routes>
           <Route 
-            path="/*" 
+            path="/percepteur" 
             element={
               <ProtectedRoute allowedRole="Percepteur">
                 <PercepteurLayout />
               </ProtectedRoute>
-            } 
-          />
+            }
+          >
+            {PercepteurRoutes.map((route: AppRoute, index: number) => (
+              <Route
+                key={index}
+                index={route.index}
+                path={route.path?.replace('/percepteur/', '')}
+                element={route.element}
+              />
+            ))}
+          </Route>
+          <Route path="*" element={<Navigate to="/percepteur" replace />} />
         </Routes>
       );
     case 'Tresorier':
       return (
         <Routes>
           <Route 
-            path="/*" 
+            path="/tresorier" 
             element={
               <ProtectedRoute allowedRole="Tresorier">
                 <TresorierLayout />
               </ProtectedRoute>
-            } 
-          />
+            }
+          >
+            {TresorierRoutes.map((route: AppRoute, index: number) => (
+              <Route
+                key={index}
+                index={route.index}
+                path={route.path?.replace('/tresorier/', '')}
+                element={route.element}
+              />
+            ))}
+          </Route>
+          <Route path="*" element={<Navigate to="/tresorier" replace />} />
         </Routes>
       );
     case 'Contribuable':
       return (
         <Routes>
           <Route 
-            path="/*" 
+            path="/contribuable" 
             element={
               <ProtectedRoute allowedRole="Contribuable">
                 <ContribuableLayout />
               </ProtectedRoute>
-            } 
-          />
+            }
+          >
+            {ContribuableRoutes.map((route: AppRoute, index: number) => (
+              <Route
+                key={index}
+                index={route.index}
+                path={route.path?.replace('/contribuable/', '')}
+                element={route.element}
+              />
+            ))}
+          </Route>
+          <Route path="*" element={<Navigate to="/contribuable" replace />} />
         </Routes>
       );
     default:

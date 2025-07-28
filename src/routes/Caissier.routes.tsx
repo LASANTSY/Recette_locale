@@ -1,9 +1,10 @@
+// import React from 'react';
 import type { AppRoute } from './types';
 
 const routes: AppRoute[] = [
   {
-    path: '/maire',
-    element: <div>Dashboard Maire</div>,
+    path: '/caissier',
+    element: <div>Dashboard Caissier</div>,
     index: true,
   }
 ];
