@@ -13,24 +13,28 @@ interface Route {
 
 const AdministrateurRoutes: Route[] = [
   {
+    path: '/administrateur',
+    element: <TableauDeBord />,
     index: true,
-    path: 'tableau_de_bord',
+  },
+  {
+    path: '/administrateur/tableau_de_bord',
     element: <TableauDeBord />,
   },
   {
-    path: 'configuration',
+    path: '/administrateur/configuration',
     element: <Configuration />,
   },
   {
-    path: 'utilisateurs',
+    path: '/administrateur/utilisateurs',
     element: <Utilisateurs />,
   },
   {
-    path: 'transactions',
+    path: '/administrateur/transactions',
     element: <Transactions />,
   },
   {
-    path: 'rapport',
+    path: '/administrateur/rapport',
     element: <Rapport />,
   },
 ];

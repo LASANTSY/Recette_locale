@@ -14,6 +14,13 @@ import { ThemeProvider } from './context/ThemeContext';
 import { AuthProvider } from './context/AuthContextV2';
 import { useAuth } from './context/auth';
 
+// Import des pages administrateur
+import TableauDeBord from './pages/admin/Dashboard';
+import Configuration from './pages/admin/Setting';
+import Utilisateurs from './pages/admin/User';
+import Transactions from './pages/admin/Transaction';
+import Rapport from './pages/admin/Report';
+
 function AppRoutes() {
   const { user } = useAuth();
   const location = useLocation();
@@ -32,13 +39,20 @@ function AppRoutes() {
       return (
         <Routes>
           <Route 
-            path="/administrateur/*" 
+            path="/administrateur" 
             element={
               <ProtectedRoute allowedRole="Administrateur">
                 <AdministrateurLayout />
               </ProtectedRoute>
-            } 
-          />
+            }
+          >
+            <Route index element={<Navigate to="/administrateur/tableau_de_bord" replace />} />
+            <Route path="tableau_de_bord" element={<TableauDeBord />} />
+            <Route path="configuration" element={<Configuration />} />
+            <Route path="utilisateurs" element={<Utilisateurs />} />
+            <Route path="transactions" element={<Transactions />} />
+            <Route path="rapport" element={<Rapport />} />
+          </Route>
           <Route path="*" element={<Navigate to="/administrateur/tableau_de_bord" replace />} />
         </Routes>
       );

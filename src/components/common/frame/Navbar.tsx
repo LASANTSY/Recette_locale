@@ -266,11 +266,11 @@ const Navbar: React.FC<NavbarProps> = ({
             <button
               onClick={() => setIsNotificationOpen(!isNotificationOpen)}
               className={`
-                relative p-2 rounded-[10px] transition-all duration-700 ease-out transform duration-200 hover:scale-105
+                relative p-2 rounded-[10px] transition-all duration-700 ease-out transform duration-200 hover:scale-105 focus:scale-105 cursor-pointer
                 ${
                   isDarkMode
-                    ? "bg-gray-700 hover:bg-gray-600 text-gray-300"
-                    : "bg-gray-100 hover:bg-gray-200 text-gray-600"
+                    ? "bg-gray-700 hover:bg-gray-600 text-gray-300 focus:bg-gray-600"
+                    : "bg-gray-100 hover:bg-gray-200 text-gray-600 focus:bg-gray-200"
                 }
               `}
               aria-label="Notifications"
@@ -331,14 +331,14 @@ const Navbar: React.FC<NavbarProps> = ({
                         key={notification.id}
                         onClick={() => onNotificationClick(notification)}
                         className={`
-                          p-3 border-b cursor-pointer transition-all duration-200 hover:scale-[1.02]
+                          p-3 m-1 border-b cursor-pointer transition-all duration-200 hover:scale-[1.02]
                           ${
                             isDarkMode
                               ? `border-gray-700 hover:bg-gray-700 ${
-                                  !notification.read ? "bg-gray-700/50 rounded-[8px]" : ""
+                                  !notification.read ? "bg-gray-700/50 rounded-[3px]" : ""
                                 }`
                               : `border-gray-100 hover:bg-gray-50 ${
-                                  !notification.read ? "bg-blue-50 rounded-[8px] p-4 m" : ""
+                                  !notification.read ? "bg-blue-100/50 rounded-[5px] p-4 m" : ""
                                 }`
                           }
                         `}
@@ -398,8 +398,8 @@ const Navbar: React.FC<NavbarProps> = ({
             <button
               onClick={() => setIsProfileOpen(!isProfileOpen)}
               className={`
-                flex items-center space-x-2 p-2 rounded-lg transition-all duration-200 hover:scale-105
-                ${isDarkMode ? "dark hover:bg-gray-700" : "hover:bg-gray-100"}
+                flex items-center space-x-2 p-2 rounded-lg transition-all duration-200 hover:scale-105 focus:scale-105 cursor-pointer
+                ${isDarkMode ? "dark hover:bg-gray-700 focus:bg-gray-700" : "hover:bg-gray-100 focus:bg-gray-100"}
               `}
               aria-label="Profile menu"
             >

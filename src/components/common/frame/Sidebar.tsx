@@ -104,7 +104,7 @@ const Sidebar: React.FC<SidebarProps> = ({
         `}
       >
         {/* Header avec logo */}
-        <div className={`flex items-center ${sidebarCollapsed ? 'justify-center p-[18px]' : 'justify-between p-[13px]'} ${isMobile ? 'p-[18px]' : ''} border-b ${theme === 'dark' ? 'border-gray-700' : 'border-gray-300'}`}> 
+        <div className={`shadow-sm flex items-center  ${sidebarCollapsed ? 'justify-center p-[17.5px]' : 'justify-between p-[13.2px]'} ${isMobile ? 'p-[17.5px]' : ''} border-b ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'}`}> 
           <div className="flex items-center gap-3 min-w-0">
             <Logo 
               size={28} 
@@ -218,12 +218,12 @@ const Sidebar: React.FC<SidebarProps> = ({
 };
 
 // Fonctions utilitaires pour la gestion des couleurs
-function hexToRgb(hex: string): string {
-  const r = parseInt(hex.slice(1, 3), 16);
-  const g = parseInt(hex.slice(3, 5), 16);
-  const b = parseInt(hex.slice(5, 7), 16);
-  return `${r}, ${g}, ${b}`;
-}
+// function hexToRgb(hex: string): string {
+//   const r = parseInt(hex.slice(1, 3), 16);
+//   const g = parseInt(hex.slice(3, 5), 16);
+//   const b = parseInt(hex.slice(5, 7), 16);
+//   return `${r}, ${g}, ${b}`;
+// }
 
 function darkenColor(hex: string, percent: number): string {
   let r = parseInt(hex.slice(1, 3), 16);

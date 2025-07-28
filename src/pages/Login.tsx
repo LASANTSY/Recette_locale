@@ -9,7 +9,6 @@ import {
   Smartphone,
   CheckCircle,
   Users,
-  LogIn,
   AlertCircle,
   HelpCircle,
   Mail,
@@ -152,9 +151,9 @@ const Login = () => {
                 transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                 className="w-12 h-12 mx-auto mb-4"
               >
-                <Loader2 className="w-12 h-12 text-emerald-600" />
+                <Loader2 className="w-12 h-12 text-[#098E00]" />
               </motion.div>
-              <p className="text-emerald-700 font-medium">
+              <p className="text-[#098E00] font-medium">
                 Connexion en cours...
               </p>
             </motion.div>
@@ -167,7 +166,7 @@ const Login = () => {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="flex-1 bg-emerald-50 px-8 py-8 flex items-center justify-center"
+        className="flex-1 bg-[#F8F8F8] px-8 py-8 flex items-center justify-center"
       >
         <div className="w-full max-w-lg">
           {/* Logo & title */}
@@ -178,14 +177,14 @@ const Login = () => {
                 className="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-emerald-600 text-white rounded-xl -mt-1">
                 <Lock className="w-6 h-6" />
               </motion.div> */}
-              <h1 className="text-3xl md:text-4xl font-light tracking-tight text-emerald-900 whitespace-nowrap">
+              <h1 className="text-3xl md:text-4xl font-light tracking-tight text-gray-800 whitespace-nowrap" style={{fontSize: '48px'}}>
                 Plateforme{" "}
-                <span className="font-semibold text-emerald-700">
+                <span className="font-semibold text-[#00C21C]">
                   Municipale
                 </span>
               </h1>
             </div>
-            <p className="text-emerald-700/70 text-base leading-relaxed">
+            <p className="text-gray-400 text-base leading-relaxed">
               Votre espace de gestion administrative moderne et sécurisé.
             </p>
           </motion.div>
@@ -202,12 +201,12 @@ const Login = () => {
                 whileHover={{ y: -2 }}
                 className="group cursor-pointer"
               >
-                <div className="bg-white border border-emerald-100 rounded-lg p-4 h-full transition-all duration-300 group-hover:bg-emerald-50">
-                  <Icon className="w-6 h-6 text-emerald-600 mb-3" />
-                  <h3 className="text-base font-semibold text-emerald-800 mb-2">
+                <div className="bg-white border border-gray-300 rounded-lg p-4 h-full transition-all duration-300 group-hover:bg-white">
+                  <Icon className="w-6 h-6 text-[#00C21C] mb-3" />
+                  <h3 className="text-base font-semibold text-gray-800 mb-2">
                     {title}
                   </h3>
-                  <p className="text-emerald-700/60 text-sm leading-relaxed">
+                  <p className="text-[#5D5D5D] text-sm leading-relaxed">
                     {desc}
                   </p>
                 </div>
@@ -218,7 +217,7 @@ const Login = () => {
           {/* Footer info */}
           <motion.div
             variants={itemVariants}
-            className="flex gap-6 text-emerald-700/60 text-sm"
+            className="flex gap-6 text-[#00C21C] text-sm"
           >
             {[
               "Plateforme certifiée",
@@ -226,7 +225,7 @@ const Login = () => {
               "Support technique",
             ].map((item, index) => (
               <span key={index} className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#00C21C]" />
                 {item}
               </span>
             ))}
@@ -243,16 +242,16 @@ const Login = () => {
       >
         <div className="w-full max-w-sm">
           <motion.div variants={itemVariants} className="text-center mb-8">
-            <motion.div
+            {/* <motion.div
               whileHover={{ scale: 1.05 }}
               className="w-12 h-12 flex items-center justify-center bg-emerald-100 rounded-lg mb-4 mx-auto text-emerald-600"
             >
               <LogIn className="w-6 h-6" />
-            </motion.div>
-            <h2 className="text-2xl font-light mb-2 text-emerald-900">
+            </motion.div> */}
+            <h2 className="text-2xl font-semibold mb-2 text-gray-800">
               Connexion
             </h2>
-            <p className="text-emerald-700/70 text-sm">
+            <p className="text-gray-400 text-sm">
               Accédez à votre espace personnel
             </p>
           </motion.div>
@@ -267,8 +266,9 @@ const Login = () => {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block mb-2 text-sm font-medium text-emerald-800"
+                    className="block mb-2 mx-1 text-sm font-medium text-gray-800 flex item-center gap-2"
                   >
+                <Mail className="mt-[1px] w-4 h-4" />
                     Adresse email
                   </label>
                   <input
@@ -276,17 +276,18 @@ const Login = () => {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Entrez votre adresse email"
+                    placeholder=" Entrez votre adresse email"
                     required
                     disabled={isLoading}
-                    className="w-full px-4 py-3 border border-emerald-200 rounded-lg text-emerald-900 placeholder-emerald-400 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full px-4 py-3 border border-gray-400 rounded-[50px] text-gray-500 placeholder-gray-400 bg-white focus:outline-none transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                 </div>
                 <div>
                   <label
                     htmlFor="password"
-                    className="block mb-2 text-sm font-medium text-emerald-800"
+                    className="block mb-2 text-sm font-medium text-gray-800 flex item-center gap-2"
                   >
+                <Lock className="mt-[1px] w-4 h-4" />
                     Mot de passe
                   </label>
                   <input
@@ -297,7 +298,7 @@ const Login = () => {
                     placeholder="Entrez votre mot de passe"
                     required
                     disabled={isLoading}
-                    className="w-full px-4 py-3 border border-emerald-200 rounded-lg text-emerald-900 placeholder-emerald-400 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full px-4 py-3 border border-gray-400 rounded-[50px] text-gray-500 placeholder-gray-400 bg-white focus:outline-none transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                 </div>
               </div>
@@ -323,7 +324,7 @@ const Login = () => {
               whileTap={{ scale: 0.98 }}
               type="submit"
               disabled={isLoading}
-              className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-3 rounded-lg flex items-center justify-center gap-3 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-[#098E00] hover:bg-[#008713] cursor-pointer text-white font-medium py-3 rounded-lg flex items-center justify-center gap-3 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isLoading ? (
                 <>
@@ -342,7 +343,6 @@ const Login = () => {
               ) : (
                 <>
                   Se connecter
-                  <ArrowRight className="w-5 h-5" />
                 </>
               )}
             </motion.button>
@@ -353,14 +353,14 @@ const Login = () => {
             variants={itemVariants}
             className="mt-10 pt-6 border-t border-emerald-100 text-center"
           >
-            <p className="mb-3 text-sm text-emerald-700/70">
+            <p className="mb-3 text-sm text-gray-600">
               Besoin d'assistance ?
             </p>
             <div className="flex justify-center gap-6 text-sm">
               <motion.a
                 whileHover={{ scale: 1.05 }}
                 href="#"
-                className="font-medium text-emerald-700 hover:text-emerald-800 flex items-center gap-2 transition-colors"
+                className="font-medium text-[#1d70b8] hover:text-[#003078] focus:text-[#4c2c92] flex items-center gap-2 transition-colors"
               >
                 <HelpCircle className="w-4 h-4" />
                 Guide
@@ -368,7 +368,7 @@ const Login = () => {
               <motion.a
                 whileHover={{ scale: 1.05 }}
                 href="#"
-                className="font-medium text-emerald-700 hover:text-emerald-800 flex items-center gap-2 transition-colors"
+                className="font-medium text-[#1d70b8] hover:text-[#003078] focus:text-[#4c2c92] flex items-center gap-2 transition-colors"
               >
                 <Mail className="w-4 h-4" />
                 Support
@@ -378,7 +378,7 @@ const Login = () => {
 
           <motion.div
             variants={itemVariants}
-            className="mt-6 text-center text-emerald-700/40 text-xs"
+            className="mt-6 text-center text-[#00C21C] text-xs"
           >
             © 2024 Plateforme Municipale. Tous droits réservés.
           </motion.div>

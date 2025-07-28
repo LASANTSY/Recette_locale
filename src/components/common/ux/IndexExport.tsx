@@ -16,3 +16,4 @@ export { default as Modal } from "./Modal";
 export { default as Tooltip } from "./Tooltip";
 export { default as Toast } from "./Toast";
 export { default as ProgressBar } from "./Progress";
+export { default as Table } from "./Table";

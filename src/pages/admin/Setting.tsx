@@ -77,13 +77,13 @@ export default function Configuration() {
       key: 'montant',
       header: 'Montant (€)',
       sortable: true,
-      render: (value) => value.toLocaleString('fr-FR'),
+      render: (value: number) => value.toLocaleString('fr-FR'),
     },
     {
       key: 'tauxRealisation',
       header: 'Taux de réalisation (%)',
       sortable: true,
-      render: (value) => (
+      render: (value: number) => (
         <span className={value >= 100 ? 'text-green-600' : 'text-yellow-600'}>
           {value.toFixed(1)}%
         </span>

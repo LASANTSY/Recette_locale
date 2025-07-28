@@ -7,7 +7,7 @@ export const mockUserData = [
     userAvatar: undefined,
   },
   {
-    userName: "RABEARISOA",
+    userName: "RABEARISOA Miora Ny Aina",
     email: "rabearisoa@admin.com",
     password: "admin456",
     userRole: "Administrateur",
