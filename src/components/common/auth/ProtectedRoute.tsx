@@ -18,7 +18,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ allowedRole, children }
     }
 
     // Vérification du rôle
-    if (user.userRole !== allowedRole) {
+    if (user.role !== allowedRole) {
       return <Navigate to="/login" state={{ from: location }} replace />;
     }
   }

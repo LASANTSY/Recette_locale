@@ -11,17 +11,7 @@ import {
   AlertCircle,
   Check
 } from 'lucide-react';
-
-interface User {
-  id: number;
-  nom: string;
-  prenom: string;
-  email: string;
-  commune: string;
-  role: string;
-  statut: 'actif' | 'bloque';
-  dateCreation: string;
-}
+import mockUsers, { User } from '../../components/common/data/mockUsers';
 
 interface Modal {
   type: 'add' | 'edit' | 'delete' | 'block' | 'alert' | null;
@@ -40,28 +30,7 @@ const communes = [
 ];
 
 function Utilisateurs() {
-  const [users, setUsers] = useState<User[]>([
-    {
-      id: 1,
-      nom: 'Rakoto',
-      prenom: 'Jean',
-      email: 'jean.rakoto@email.com',
-      commune: 'Antananarivo',
-      role: 'Administrateur',
-      statut: 'actif',
-      dateCreation: '2024-01-15'
-    },
-    {
-      id: 2,
-      nom: 'Razafy',
-      prenom: 'Marie',
-      email: 'marie.razafy@email.com',
-      commune: 'Antsirabe',
-      role: 'Administrateur',
-      statut: 'bloque',
-      dateCreation: '2024-02-20'
-    }
-  ]);
+  const [users, setUsers] = useState<User[]>(mockUsers);
 
   const [modal, setModal] = useState<Modal>({ type: null });
   const [formData, setFormData] = useState({
@@ -156,7 +125,7 @@ function Utilisateurs() {
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-3">
-            <Users className="w-8 h-8 text-blue-600" />
+            {/* <Users className="w-8 h-8 text-blue-600" /> */}
             <h1 className="text-3xl font-bold text-gray-900">Gestion des Utilisateurs</h1>
           </div>
           <button
@@ -334,7 +303,7 @@ function Utilisateurs() {
 
       {/* Modals */}
       {modal.type && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 flex items-center justify-center z-50 p-4 backdrop-blur-sm bg-black/10">
           <div 
             className="bg-white rounded-xl shadow-2xl w-full max-w-md transform transition-all duration-300 scale-100"
             style={{ animation: 'modalFadeIn 0.3s ease-out' }}

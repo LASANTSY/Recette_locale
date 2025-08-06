@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { mockUserData } from "../components/common/data/mockUserData";
+import mockUsers from "../components/common/data/mockUsers";
 import { useAuth } from "../context/auth";
 import {
   Lock,
@@ -117,11 +117,11 @@ const Login = () => {
     // Simulation d'un délai de connexion
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
-    const user = mockUserData.find((u) => u.email === email && u.password === password);
+    const user = mockUsers.find((u) => u.email === email && u.password === password);
     if (user) {
       login(user);
       const from =
-        location.state?.from?.pathname || getDefaultPathForRole(user.userRole);
+        location.state?.from?.pathname || getDefaultPathForRole(user.role);
       navigate(from, { replace: true });
     } else {
       setError("Email ou mot de passe incorrect");

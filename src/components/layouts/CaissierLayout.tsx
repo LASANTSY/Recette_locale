@@ -3,14 +3,11 @@ import { Outlet } from 'react-router-dom'
 import { 
   Home, 
   Users, 
-  BarChart3, 
-  Mail, 
-  Calendar, 
-  Settings,
+  BarChart3
 } from 'lucide-react';
 import { Navbar, Sidebar } from '../common/frame/IndexExport';
 import { mockNotifications } from '../common/data/mockNotifications';
-import { mockUserData } from '../common/data/mockUserData';
+import mockUsers from '../common/data/mockUsers';
 import { useTheme } from '../../context/ThemeContext';
 
 type SidebarItem = {
@@ -98,9 +95,9 @@ const CaissierLayout: React.FC = () => {
           }}
         >
           <Navbar
-            userName={mockUserData.userName}
-            userRole={mockUserData.userRole}
-            userAvatar={mockUserData.userAvatar}
+            userName={(() => { const u = mockUsers.find(u => u.role === 'Caissier'); return u ? `${u.prenom} ${u.nom}`.trim() : ''; })()}
+            userRole={mockUsers.find(u => u.role === 'Caissier')?.role || ''}
+            userAvatar={mockUsers.find(u => u.role === 'Caissier')?.userAvatar || ''}
             sidebarWidth={currentSidebarWidth}
             isSidebarCollapsed={isSidebarCollapsed}
             notifications={mockNotifications}

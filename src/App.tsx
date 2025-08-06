@@ -45,7 +45,7 @@ function AppRoutes() {
       </Routes>
     );
   }
-  switch (user.userRole) {
+  switch (user.role) {
     case 'Administrateur':
       return (
         <Routes>

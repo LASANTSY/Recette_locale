@@ -115,8 +115,8 @@ const AdministrateurLayout: React.FC = () => {
           style={{ height: `${NAVBAR_HEIGHT}px` }}
         >
           <Navbar
-            userName={user?.userName || ""}
-            userRole={user?.userRole || ""}
+            userName={user ? `${user.prenom} ${user.nom}`.trim() : ""}
+            userRole={user?.role || ""}
             userAvatar={user?.userAvatar}
             sidebarWidth={!isMobile ? currentSidebarWidth : 0}
             isSidebarCollapsed={isSidebarCollapsed}
