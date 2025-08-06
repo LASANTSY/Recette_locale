@@ -139,21 +139,25 @@ function Table<T extends { [key: string]: any }>({ data = [], columns = [], onRo
       <div className="lg:hidden">
         <div className="space-y-4">
           {currentData && currentData.length > 0 && currentData.slice(startIndex, endIndex).length > 0 ? (
-            currentData.slice(startIndex, endIndex).map((item, rowIndex) => (
-              <div
-                key={rowIndex}
-                className="bg-white rounded-lg border border-gray-200 p-4 shadow-sm"
-              >
-                {currentColumns.map((column, colIndex) => (
-                  <div key={colIndex} className="flex justify-between items-center py-2 border-b border-gray-100 last:border-b-0">
-                    <span className="text-sm font-medium text-gray-600">{column.header || column.label}</span>
-                    <span className="text-sm text-gray-900">
-                      {column.render ? column.render(item[column.key], item) : item[column.key]}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            ))
+            currentData.slice(startIndex, endIndex).map((item, rowIndex) => {
+              const isSelected = selectedRowId !== undefined && item.id === selectedRowId;
+              return (
+                <div
+                  key={rowIndex}
+                  className={`bg-white rounded-lg border border-gray-200 p-4 shadow-sm cursor-pointer transition-colors duration-150 ${isSelected ? 'bg-blue-50/80 border-l-4 border-blue-500' : ''}`}
+                  onClick={() => onRowClick && onRowClick(item)}
+                >
+                  {currentColumns.map((column, colIndex) => (
+                    <div key={colIndex} className="flex justify-between items-center py-2 border-b border-gray-100 last:border-b-0">
+                      <span className="text-sm font-medium text-gray-600">{column.header || column.label}</span>
+                      <span className="text-sm text-gray-900">
+                        {column.render ? column.render(item[column.key], item) : item[column.key]}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              );
+            })
           ) : (
             <div className="bg-white rounded-lg border border-gray-200 p-8 text-center">
               <div className="w-12 h-12 mx-auto mb-4 text-gray-400">

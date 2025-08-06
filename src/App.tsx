@@ -66,7 +66,7 @@ function AppRoutes() {
               />
             ))}
           </Route>
-          <Route path="*" element={<Navigate to="/administrateur/tableau_de_bord" replace />} />
+          <Route path="*" element={<Navigate to="/administrateur/tableau-de-bord" replace />} />
         </Routes>
       );
     case 'SuperAdministrateur':
@@ -89,7 +89,7 @@ function AppRoutes() {
               />
             ))}
           </Route>
-          <Route path="*" element={<Navigate to="/super-administrateur" replace />} />
+          <Route path="*" element={<Navigate to="/super-administrateur/configuration" replace />} />
         </Routes>
       );
     case 'Caissier':

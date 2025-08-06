@@ -263,43 +263,49 @@ const Login = () => {
           >
             <motion.div variants={itemVariants}>
               <div className="space-y-4">
-                <div>
+                <div className="relative">
                   <label
                     htmlFor="email"
                     className="block mb-2 mx-1 text-sm font-medium text-gray-800 flex item-center gap-2"
                   >
-                <Mail className="mt-[1px] w-4 h-4" />
+                    {/* <Mail className="mt-[1px] w-4 h-4" /> */}
                     Adresse email
                   </label>
-                  <input
-                    id="email"
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder=" Entrez votre adresse email"
-                    required
-                    disabled={isLoading}
-                    className="w-full px-4 py-3 border border-gray-400 rounded-[50px] text-gray-500 placeholder-gray-400 bg-white focus:outline-none transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-                  />
+                  <div className="relative">
+                    <Mail className="absolute left-4 top-6 transform -translate-y-1/2 w-5 h-5 text-gray-500" />
+                    <input
+                      id="email"
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="exemple@email.com"
+                      required
+                      disabled={isLoading}
+                      className="w-full pl-12 pr-4 py-3 border border-gray-400 rounded-[50px] text-gray-500 placeholder-gray-400 bg-white focus:outline-none transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                    />
+                  </div>
                 </div>
-                <div>
+                <div className="relative">
                   <label
                     htmlFor="password"
                     className="block mb-2 text-sm font-medium text-gray-800 flex item-center gap-2"
                   >
-                <Lock className="mt-[1px] w-4 h-4" />
+                    {/* <Lock className="mt-[1px] w-4 h-4" /> */}
                     Mot de passe
                   </label>
-                  <input
-                    id="password"
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Entrez votre mot de passe"
-                    required
-                    disabled={isLoading}
-                    className="w-full px-4 py-3 border border-gray-400 rounded-[50px] text-gray-500 placeholder-gray-400 bg-white focus:outline-none transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-                  />
+                  <div className="relative">
+                    <Lock className="absolute left-4 top-6 transform -translate-y-1/2 w-5 h-5 text-gray-500" />
+                    <input
+                      id="password"
+                      type="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      placeholder="••••••••"
+                      required
+                      disabled={isLoading}
+                      className="w-full pl-12 pr-4 py-3 border border-gray-400 rounded-[50px] text-gray-500 placeholder-gray-400 bg-white focus:outline-none transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                    />
+                  </div>
                 </div>
               </div>
             </motion.div>

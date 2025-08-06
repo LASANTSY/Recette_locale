@@ -10,7 +10,7 @@ export const mockUserData = [
     userName: "RABEARISOA Miora Ny Aina",
     email: "rabearisoa@admin.com",
     password: "admin456",
-    userRole: "Administrateur",
+    userRole: "SuperAdministrateur",
     userAvatar: undefined,
   },
   {

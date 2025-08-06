@@ -450,7 +450,7 @@ export default function Configuration() {
                     key: 'montant',
                     label: 'Montant',
                     width: 'w-32',
-                    render: (value) => <span className="text-sm font-semibold text-gray-900">{value.toLocaleString('fr-FR')} €</span>,
+                    render: (value) => <span className="text-sm font-semibold text-gray-900">{value.toLocaleString('fr-FR')} </span>,
                   },
                   {
                     key: 'active',

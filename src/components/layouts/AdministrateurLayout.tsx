@@ -50,7 +50,7 @@ const AdministrateurLayout: React.FC = () => {
   const NAVBAR_HEIGHT = 64;
 
   const sidebarItems: SidebarItem[] = [
-    { id: 'tableau de bord', name: 'Tableau de bord', icon: Home, route: '/administrateur/tableau_de_bord' },
+    { id: 'tableau de bord', name: 'Tableau de bord', icon: Home, route: '/administrateur/tableau-de-bord' },
     { id: 'users', name: 'Utilisateurs', icon: Users, route: '/administrateur/utilisateurs' },
     { id: 'transactions', name: 'Transactions', icon: BarChart3, route: '/administrateur/transactions' },
     { id: 'rapport', name: 'Rapport', icon: Mail, route: '/administrateur/rapport' },

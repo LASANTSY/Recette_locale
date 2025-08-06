@@ -12,7 +12,7 @@ const routes: AppRoute[] = [
     index: true,
   },
   {
-    path: '/administrateur/tableau_de_bord',
+    path: '/administrateur/tableau-de-bord',
     element: <TableauDeBord />,
   },
   {
