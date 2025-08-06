@@ -14,6 +14,8 @@ import {
   Mail,
   ArrowRight,
   Loader2,
+  Eye,
+  EyeOff,
 } from "lucide-react";
 
 const featureList = [
@@ -80,6 +82,7 @@ const formVariants = {
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -290,21 +293,29 @@ const Login = () => {
                     htmlFor="password"
                     className="block mb-2 text-sm font-medium text-gray-800 flex item-center gap-2"
                   >
-                    {/* <Lock className="mt-[1px] w-4 h-4" /> */}
                     Mot de passe
                   </label>
                   <div className="relative">
                     <Lock className="absolute left-4 top-6 transform -translate-y-1/2 w-5 h-5 text-gray-500" />
                     <input
                       id="password"
-                      type="password"
+                      type={showPassword ? "text" : "password"}
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="••••••••"
                       required
                       disabled={isLoading}
-                      className="w-full pl-12 pr-4 py-3 border border-gray-400 rounded-[50px] text-gray-500 placeholder-gray-400 bg-white focus:outline-none transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full pl-12 pr-12 py-3 border border-gray-400 rounded-[50px] text-gray-500 placeholder-gray-400 bg-white focus:outline-none transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                     />
+                    <button
+                      type="button"
+                      tabIndex={-1}
+                      onClick={() => setShowPassword((v) => !v)}
+                      className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none"
+                      aria-label={showPassword ? 'Masquer le mot de passe' : 'Afficher le mot de passe'}
+                    >
+                      {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                    </button>
                   </div>
                 </div>
               </div>
