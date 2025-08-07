@@ -15,7 +15,8 @@ export default function UserForm({ user, onClose }: UserFormProps) {
     user_email: '',
     user_phone: '',
     municipality_id: '',
-    citizen_id: '',
+    citizen_search: '', // champ texte pour recherche citoyen
+    citizen_id: '', // id du citoyen trouvé
     role_ids: [] as number[]
   })
 
@@ -25,6 +26,7 @@ export default function UserForm({ user, onClose }: UserFormProps) {
         user_email: user.user_email,
         user_phone: user.user_phone,
         municipality_id: user.municipality_id,
+        citizen_search: user.citizen ? `${user.citizen.citizen_name} ${user.citizen.citizen_lastname}` : '',
         citizen_id: user.citizen?.id_citizen || '',
         role_ids: user.roles?.map(r => r.role_id) || []
       })
@@ -91,21 +93,29 @@ export default function UserForm({ user, onClose }: UserFormProps) {
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Citoyen
+              Citoyen (nom/prénom ou email)
             </label>
-            <select
-              value={formData.citizen_id}
-              onChange={(e) => setFormData(prev => ({ ...prev, citizen_id: e.target.value }))}
+            <input
+              type="text"
+              value={formData.citizen_search}
+              onChange={e => {
+                const value = e.target.value;
+                setFormData(prev => ({ ...prev, citizen_search: value }));
+                // Recherche citoyen par nom+prénom ou email
+                const found = citoyens.find(c =>
+                  `${c.citizen_name} ${c.citizen_lastname}`.toLowerCase() === value.trim().toLowerCase() ||
+                  (c.citizen_email && c.citizen_email.toLowerCase() === value.trim().toLowerCase())
+                );
+                setFormData(prev => ({ ...prev, citizen_id: found ? found.id_citizen : '' }));
+              }}
               className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
-            >
-              <option value="">Sélectionner un citoyen</option>
-              {citoyens.map((citoyen) => (
-                <option key={citoyen.id_citizen} value={citoyen.id_citizen}>
-                  {citoyen.citizen_name} {citoyen.citizen_lastname}
-                </option>
-              ))}
-            </select>
+              placeholder="Ex: Jean Dupont ou email"
+              autoComplete="off"
+            />
+            {formData.citizen_id === '' && formData.citizen_search.length > 0 && (
+              <p className="text-xs text-red-500 mt-1">Aucun citoyen correspondant</p>
+            )}
           </div>
 
           <div>
@@ -118,6 +128,7 @@ export default function UserForm({ user, onClose }: UserFormProps) {
               onChange={(e) => setFormData(prev => ({ ...prev, user_email: e.target.value }))}
               className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
+              autoComplete="off"
             />
           </div>
 
@@ -180,6 +191,7 @@ export default function UserForm({ user, onClose }: UserFormProps) {
             <button
               type="submit"
               className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+              disabled={formData.citizen_id === ''}
             >
               {user ? 'Modifier' : 'Créer'}
             </button>
