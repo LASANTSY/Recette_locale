@@ -1,6 +1,6 @@
 import type { AppRoute } from './types';
 import Configuration from '../pages/superAdmin/Configuration';
-import Utilisateurs from '../pages/superAdmin/Utilisateurs';
+import UserManagement from '../pages/superAdmin/userManagement/UserManagement';
 
 const routes: AppRoute[] = [
   {
@@ -10,7 +10,7 @@ const routes: AppRoute[] = [
   },
   {
     path: '/super-administrateur/utilisateur',
-    element: <Utilisateurs />,
+    element: <UserManagement />,
   },
 ];
 

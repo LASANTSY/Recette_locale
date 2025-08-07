@@ -302,7 +302,7 @@ const Login = () => {
                       type={showPassword ? "text" : "password"}
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      placeholder="••••••••"
+                      placeholder="Mot de passe"
                       required
                       disabled={isLoading}
                       className="w-full pl-12 pr-12 py-3 border border-gray-400 rounded-[50px] text-gray-500 placeholder-gray-400 bg-white focus:outline-none transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"

@@ -11,7 +11,7 @@ import {
   AlertCircle,
   Check
 } from 'lucide-react';
-import mockUsers, { User } from '../../components/common/data/mockUsers';
+import mockUsers, { User } from '../../../components/common/data/mockUsers';
 
 interface Modal {
   type: 'add' | 'edit' | 'delete' | 'block' | 'alert' | null;
