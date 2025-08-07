@@ -98,7 +98,7 @@ export default function RolesTab() {
                 </div>
               </div>
 
-              <div className="border-t pt-3">
+              <div className="border-t border-gray-300 pt-3">
                 <p className="text-xs text-gray-500 mb-2">Permissions:</p>
                 <div className="flex flex-wrap gap-1">
                   {role.permissions?.slice(0, 3).map((permission) => (
