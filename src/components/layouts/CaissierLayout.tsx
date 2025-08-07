@@ -7,7 +7,7 @@ import {
 } from 'lucide-react';
 import { Navbar, Sidebar } from '../common/frame/IndexExport';
 import { mockNotifications } from '../common/data/mockNotifications';
-import { useUserContext } from '../../context/UserContext';
+import { useUserContext } from '../../pages/superAdmin/userManagement/context/UserContext';
 import { useTheme } from '../../context/ThemeContext';
 
 type SidebarItem = {

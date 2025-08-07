@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { useUserContext } from "../context/UserContext";
+import { useUserContext } from "../pages/superAdmin/userManagement/context/UserContext";
 import { useAuth } from "../context/auth";
 import {
   Lock,
@@ -96,18 +96,16 @@ const Login = () => {
         return "/administrateur/tableau_de_bord";
       case "SuperAdministrateur":
         return "/superadmin";
-      case "Caissier":
-        return "/caissier";
       case "Maire":
         return "/maire";
       case "Ordonnateur":
         return "/ordonnateur";
+      case "Caissier":
+        return "/caissier";
       case "Percepteur":
         return "/percepteur";
-      case "Tresorier":
-        return "/tresorier";
-      case "Contribuable":
-        return "/contribuable";
+      case "Responsable Communal":
+        return "/responsable";
       default:
         return "/";
     }
@@ -130,7 +128,8 @@ const Login = () => {
     }
     // Récupérer le rôle principal
     const mainRole = user.roles && user.roles.length > 0 ? user.roles[0].role_name : "";
-    login(user);
+    // On passe le rôle principal dans le champ 'role' pour le contexte d'auth
+    login({ ...user, role: mainRole });
     const from = location.state?.from?.pathname || getDefaultPathForRole(mainRole);
     navigate(from, { replace: true });
   };

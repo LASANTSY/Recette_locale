@@ -202,7 +202,7 @@ const mockPermissions: Permission[] = [
 const mockRoles: Role[] = [
   {
     role_id: 24,
-    role_name: "Admin",
+    role_name: "Administrateur",
     role_slug: "admin",
     application: mockApplications[0],
     permissions: mockPermissions
@@ -265,7 +265,7 @@ const mockRoles: Role[] = [
   },
   {
     role_id: 29,
-    role_name: "Responsable communale",
+    role_name: "Responsable Communal",
     role_slug: "municipal-manager",
     application: mockApplications[0],
     permissions: [
@@ -327,7 +327,7 @@ const mockUsers: User[] = [
   {
   user_id: "user-3",
   user_pseudo: "LASANTSY",
-  user_email: "lasantsyfleury@gmail.com",
+  user_email: "lasantsy@gmail.com",
   user_password: "root1234",
   user_phone: "0321234567",
   municipality_id: "aaaa-bbbb-cccc-dddd",
@@ -366,7 +366,7 @@ const mockUsers: User[] = [
   municipality_id: "mmmm-nnnn-oooo-pppp",
   id_citizen: "d4c95ed2-4444-487a-b699-86e4cc5d6507",
   citizen: mockCitoyens[5],
-  roles: [mockRoles[5]] // Responsable communale
+  roles: [mockRoles[5]] // Responsable Communal
 },
 {
   user_id: "user-7",

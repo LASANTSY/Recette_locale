@@ -12,7 +12,7 @@ import Login from "./pages/Login";
 import ProtectedRoute from "./components/common/auth/ProtectedRoute";
 import { ThemeProvider } from './context/ThemeContext';
 import { AuthProvider } from './context/AuthContextV2';
-import { UserProvider } from './context/UserContext';
+import { UserProvider } from './pages/superAdmin/userManagement/context/UserContext';
 import { useAuth } from './context/auth';
 
 // Import des routes
