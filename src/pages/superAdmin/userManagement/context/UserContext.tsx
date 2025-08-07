@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react'
-import { User, Role, Permission, Citoyen, Application } from '../types'
+import type { User, Role, Permission, Citoyen, Application } from '../types/index'
 
 interface UserContextType {
   users: User[]
@@ -40,6 +40,23 @@ const mockCitoyens: Citoyen[] = [
     citizen_national_card_date: "2010-05-15"
   },
   {
+    id_citizen: "8ec95ed2-78bd-487a-b699-86e4cc5d6502",
+    citizen_name: "John",
+    citizen_lastname: "Doe",
+    citizen_date_of_birth: "1990-01-01",
+    citizen_location_of_birth: "Paris",
+    citizen_photo: "/abstract-profile.png",
+    citizen_national_card_number: 123456789,
+    citizen_adress: "123 Rue",
+    citizen_city: "Paris",
+    fokotany_id: 2,
+    citizen_work: "Engineer",
+    citizen_father: "Father Name",
+    citizen_mother: "Mother Name",
+    citizen_national_card_location: "Paris Office",
+    citizen_national_card_date: "2010-05-15"
+  },
+  {
     id_citizen: "9fc95ed2-78bd-487a-b699-86e4cc5d6503",
     citizen_name: "Jane",
     citizen_lastname: "Smith",
@@ -55,7 +72,93 @@ const mockCitoyens: Citoyen[] = [
     citizen_mother: "Mother Smith",
     citizen_national_card_location: "Lyon Office",
     citizen_national_card_date: "2008-03-20"
-  }
+  },
+  {
+  id_citizen: "a1c95ed2-1111-487a-b699-86e4cc5d6504",
+  citizen_name: "LASANTSY",
+  citizen_lastname: "Fleury",
+  citizen_date_of_birth: "1980-10-10",
+  citizen_location_of_birth: "Fianarantsoa",
+  citizen_photo: "/citizen-marc.png",
+  citizen_national_card_number: 112233445,
+  citizen_adress: "Route RN7",
+  citizen_city: "Fianarantsoa",
+  fokotany_id: 4,
+  citizen_work: "Développeur",
+  citizen_father: "Jean Andrianina",
+  citizen_mother: "Marie Rasoanaivo",
+  citizen_national_card_location: "Fianarantsoa Bureau",
+  citizen_national_card_date: "2000-01-01"
+},
+{
+  id_citizen: "b2c95ed2-2222-487a-b699-86e4cc5d6505",
+  citizen_name: "Hanta",
+  citizen_lastname: "Rakoto",
+  citizen_date_of_birth: "1992-08-08",
+  citizen_location_of_birth: "Toamasina",
+  citizen_photo: "/citizen-hanta.png",
+  citizen_national_card_number: 998877665,
+  citizen_adress: "Rue Mangarivotra",
+  citizen_city: "Toamasina",
+  fokotany_id: 5,
+  citizen_work: "Caissière",
+  citizen_father: "Joseph Rakoto",
+  citizen_mother: "Lucie Rasoa",
+  citizen_national_card_location: "Toamasina Office",
+  citizen_national_card_date: "2012-09-09"
+},
+{
+  id_citizen: "c3c95ed2-3333-487a-b699-86e4cc5d6506",
+  citizen_name: "Tahina",
+  citizen_lastname: "Randriamalala",
+  citizen_date_of_birth: "1988-04-04",
+  citizen_location_of_birth: "Antsirabe",
+  citizen_photo: "/citizen-tahina.png",
+  citizen_national_card_number: 556677889,
+  citizen_adress: "Lot II",
+  citizen_city: "Antsirabe",
+  fokotany_id: 6,
+  citizen_work: "Ordonnateur",
+  citizen_father: "Ndranto",
+  citizen_mother: "Mireille",
+  citizen_national_card_location: "Antsirabe Office",
+  citizen_national_card_date: "2010-11-11"
+},
+{
+  id_citizen: "d4c95ed2-4444-487a-b699-86e4cc5d6507",
+  citizen_name: "Faniry",
+  citizen_lastname: "Rasolo",
+  citizen_date_of_birth: "1995-12-12",
+  citizen_location_of_birth: "Mahajanga",
+  citizen_photo: "/citizen-faniry.png",
+  citizen_national_card_number: 223344556,
+  citizen_adress: "Mahajanga centre",
+  citizen_city: "Mahajanga",
+  fokotany_id: 7,
+  citizen_work: "Responsable",
+  citizen_father: "Victor",
+  citizen_mother: "Odile",
+  citizen_national_card_location: "Mahajanga Office",
+  citizen_national_card_date: "2014-06-06"
+},
+{
+  id_citizen: "e5c95ed2-5555-487a-b699-86e4cc5d6508",
+  citizen_name: "Lova",
+  citizen_lastname: "Ravelomanana",
+  citizen_date_of_birth: "1975-03-03",
+  citizen_location_of_birth: "Antananarivo",
+  citizen_photo: "/citizen-lova.png",
+  citizen_national_card_number: 334455667,
+  citizen_adress: "Analakely",
+  citizen_city: "Antananarivo",
+  fokotany_id: 1,
+  citizen_work: "Maire",
+  citizen_father: "Edgar",
+  citizen_mother: "Soa",
+  citizen_national_card_location: "Antananarivo Office",
+  citizen_national_card_date: "1995-02-02"
+}
+
 ]
 
 const mockApplications: Application[] = [
@@ -110,26 +213,173 @@ const mockRoles: Role[] = [
     role_slug: "user",
     application: mockApplications[0],
     permissions: [mockPermissions[0]]
+  },
+  {
+    role_id: 26,
+    role_name: "SuperAdministrateur",
+    role_slug: "super-admin",
+    application: mockApplications[0],
+    permissions: [...mockPermissions, 
+      {
+        permission_id: 255,
+        permission_label: "Gérer tous les aspects système",
+        permission_slug: "manage-system"
+      }
+    ]
+  },
+  {
+    role_id: 27,
+    role_name: "Caissier",
+    role_slug: "cashier",
+    application: mockApplications[1],
+    permissions: [
+      {
+        permission_id: 256,
+        permission_label: "Gérer les transactions financières",
+        permission_slug: "manage-transactions"
+      },
+      {
+        permission_id: 257,
+        permission_label: "Émettre des reçus",
+        permission_slug: "issue-receipts"
+      }
+    ]
+  },
+  {
+    role_id: 28,
+    role_name: "Ordonnateur",
+    role_slug: "order-officer",
+    application: mockApplications[1],
+    permissions: [
+      {
+        permission_id: 258,
+        permission_label: "Approuver les dépenses",
+        permission_slug: "approve-expenses"
+      },
+      {
+        permission_id: 259,
+        permission_label: "Ordonnancer les paiements",
+        permission_slug: "order-payments"
+      }
+    ]
+  },
+  {
+    role_id: 29,
+    role_name: "Responsable communale",
+    role_slug: "municipal-manager",
+    application: mockApplications[0],
+    permissions: [
+      {
+        permission_id: 260,
+        permission_label: "Gérer les services communaux",
+        permission_slug: "manage-municipal-services"
+      },
+      {
+        permission_id: 261,
+        permission_label: "Superviser les activités",
+        permission_slug: "supervise-activities"
+      }
+    ]
+  },
+  {
+    role_id: 30,
+    role_name: "Maire",
+    role_slug: "mayor",
+    application: mockApplications[0],
+    permissions: [
+      {
+        permission_id: 262,
+        permission_label: "Accès à toutes les fonctionnalités",
+        permission_slug: "full-access"
+      },
+      {
+        permission_id: 263,
+        permission_label: "Prendre des décisions exécutives",
+        permission_slug: "executive-decisions"
+      }
+    ]
   }
 ]
 
 const mockUsers: User[] = [
   {
     user_id: "user-1",
-    user_email: "johndoe1@example.com",
+    user_pseudo: "JohnDoe",
+    user_email: "johndoe@example.com",
+    user_password: "password123",
     user_phone: "1234567890",
-    municipality_id: "1",
+    municipality_id: "xxxx-xxxx-xxxx-xxxx",
+    id_citizen: "8ec95ed2-78bd-487a-b699-86e4cc5d6502",
     citizen: mockCitoyens[0],
     roles: [mockRoles[0]]
   },
   {
     user_id: "user-2",
+    user_pseudo: "JaneSmith",
     user_email: "janesmith@example.com",
+    user_password: "password456",
     user_phone: "0987654321",
-    municipality_id: "2",
+    municipality_id: "yyyy-yyyy-yyyy-yyyy",
+    id_citizen: "9fc95ed2-78bd-487a-b699-86e4cc5d6503",
     citizen: mockCitoyens[1],
     roles: [mockRoles[1]]
-  }
+  },
+  {
+  user_id: "user-3",
+  user_pseudo: "LASANTSY",
+  user_email: "lasantsyfleury@gmail.com",
+  user_password: "root1234",
+  user_phone: "0321234567",
+  municipality_id: "aaaa-bbbb-cccc-dddd",
+  id_citizen: "a1c95ed2-1111-487a-b699-86e4cc5d6504",
+  citizen: mockCitoyens[2],
+  roles: [mockRoles[2]] // SuperAdministrateur
+},
+{
+  user_id: "user-4",
+  user_pseudo: "HantaCashier",
+  user_email: "hanta.cashier@example.com",
+  user_password: "cashierpass",
+  user_phone: "0337654321",
+  municipality_id: "eeee-ffff-gggg-hhhh",
+  id_citizen: "b2c95ed2-2222-487a-b699-86e4cc5d6505",
+  citizen: mockCitoyens[3],
+  roles: [mockRoles[3]] // Caissier
+},
+{
+  user_id: "user-5",
+  user_pseudo: "TahinaOrder",
+  user_email: "tahina.order@example.com",
+  user_password: "orderpass",
+  user_phone: "0349876543",
+  municipality_id: "iiii-jjjj-kkkk-llll",
+  id_citizen: "c3c95ed2-3333-487a-b699-86e4cc5d6506",
+  citizen: mockCitoyens[4],
+  roles: [mockRoles[4]] // Ordonnateur
+},
+{
+  user_id: "user-6",
+  user_pseudo: "FaniryManager",
+  user_email: "faniry.manager@example.com",
+  user_password: "managerpass",
+  user_phone: "0323344556",
+  municipality_id: "mmmm-nnnn-oooo-pppp",
+  id_citizen: "d4c95ed2-4444-487a-b699-86e4cc5d6507",
+  citizen: mockCitoyens[5],
+  roles: [mockRoles[5]] // Responsable communale
+},
+{
+  user_id: "user-7",
+  user_pseudo: "LovaMayor",
+  user_email: "lova.mayor@example.com",
+  user_password: "mayorpass",
+  user_phone: "0331122334",
+  municipality_id: "qqqq-rrrr-ssss-tttt",
+  id_citizen: "e5c95ed2-5555-487a-b699-86e4cc5d6508",
+  citizen: mockCitoyens[6],
+  roles: [mockRoles[6]] // Maire
+}
+
 ]
 
 export function UserProvider({ children }: { children: ReactNode }) {

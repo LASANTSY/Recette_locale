@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import mockUsers from "../components/common/data/mockUsers";
+import { useUserContext } from "../context/UserContext";
 import { useAuth } from "../context/auth";
 import {
   Lock,
@@ -88,6 +88,7 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { login } = useAuth();
+  const { users } = useUserContext();
 
   const getDefaultPathForRole = (role) => {
     switch (role) {
@@ -120,16 +121,18 @@ const Login = () => {
     // Simulation d'un délai de connexion
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
-    const user = mockUsers.find((u) => u.email === email && u.password === password);
-    if (user) {
-      login(user);
-      const from =
-        location.state?.from?.pathname || getDefaultPathForRole(user.role);
-      navigate(from, { replace: true });
-    } else {
+    // Adaptation au format UserContext
+    const user = users.find((u) => u.user_email === email && u.user_password === password);
+    if (!user) {
       setError("Email ou mot de passe incorrect");
       setIsLoading(false);
+      return;
     }
+    // Récupérer le rôle principal
+    const mainRole = user.roles && user.roles.length > 0 ? user.roles[0].role_name : "";
+    login(user);
+    const from = location.state?.from?.pathname || getDefaultPathForRole(mainRole);
+    navigate(from, { replace: true });
   };
 
   return (
@@ -175,11 +178,6 @@ const Login = () => {
           {/* Logo & title */}
           <motion.div variants={itemVariants} className="mb-12">
             <div className="flex items-baseline gap-3 mb-6">
-              {/* <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-emerald-600 text-white rounded-xl -mt-1">
-                <Lock className="w-6 h-6" />
-              </motion.div> */}
               <h1 className="text-3xl md:text-4xl font-light tracking-tight text-gray-800 whitespace-nowrap" style={{fontSize: '48px'}}>
                 Plateforme{" "}
                 <span className="font-semibold text-[#00C21C]">
@@ -245,12 +243,6 @@ const Login = () => {
       >
         <div className="w-full max-w-sm">
           <motion.div variants={itemVariants} className="text-center mb-8">
-            {/* <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="w-12 h-12 flex items-center justify-center bg-emerald-100 rounded-lg mb-4 mx-auto text-emerald-600"
-            >
-              <LogIn className="w-6 h-6" />
-            </motion.div> */}
             <h2 className="text-2xl font-semibold mb-2 text-gray-800">
               Connexion
             </h2>
@@ -271,7 +263,6 @@ const Login = () => {
                     htmlFor="email"
                     className="block mb-2 mx-1 text-sm font-medium text-gray-800 flex item-center gap-2"
                   >
-                    {/* <Mail className="mt-[1px] w-4 h-4" /> */}
                     Adresse email
                   </label>
                   <div className="relative">

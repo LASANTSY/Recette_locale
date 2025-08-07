@@ -18,11 +18,14 @@ export interface Citoyen {
 
 export interface User {
   user_id?: string
+  user_pseudo: string
   user_email: string
+  user_password: string
   user_phone: string
   municipality_id: string
+  id_citizen: string
   citizen?: Citoyen
-  roles?: Role[]
+  roles: Role[]
 }
 
 export interface Role {

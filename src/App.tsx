@@ -12,6 +12,7 @@ import Login from "./pages/Login";
 import ProtectedRoute from "./components/common/auth/ProtectedRoute";
 import { ThemeProvider } from './context/ThemeContext';
 import { AuthProvider } from './context/AuthContextV2';
+import { UserProvider } from './context/UserContext';
 import { useAuth } from './context/auth';
 
 // Import des routes
@@ -239,9 +240,11 @@ function App() {
   return (
     <ThemeProvider>
       <AuthProvider>
-        <BrowserRouter>
-          <AppRoutes />
-        </BrowserRouter>
+        <UserProvider>
+          <BrowserRouter>
+            <AppRoutes />
+          </BrowserRouter>
+        </UserProvider>
       </AuthProvider>
     </ThemeProvider>
   );

@@ -120,7 +120,8 @@ const mockUsers: User[] = [
     user_phone: "1234567890",
     municipality_id: "1",
     citizen: mockCitoyens[0],
-    roles: [mockRoles[0]]
+    roles: [mockRoles[0]],
+    password: "password1"
   },
   {
     user_id: "user-2",
@@ -128,7 +129,99 @@ const mockUsers: User[] = [
     user_phone: "0987654321",
     municipality_id: "2",
     citizen: mockCitoyens[1],
-    roles: [mockRoles[1]]
+    roles: [mockRoles[1]],
+    password: "password2"
+  },
+  // Utilisateurs migrés de mockUsers.ts
+  {
+    user_id: "user-3",
+    user_email: "jean.rakoto@email.com",
+    user_phone: "",
+    municipality_id: "Antananarivo",
+    citizen: undefined,
+    roles: [{
+      role_id: 100,
+      role_name: "Administrateur",
+      role_slug: "administrateur",
+      application: mockApplications[0],
+      permissions: mockPermissions
+    }],
+    password: "admin123"
+  },
+  {
+    user_id: "user-4",
+    user_email: "marie.razafy@email.com",
+    user_phone: "",
+    municipality_id: "Antsirabe",
+    citizen: undefined,
+    roles: [{
+      role_id: 100,
+      role_name: "Administrateur",
+      role_slug: "administrateur",
+      application: mockApplications[0],
+      permissions: mockPermissions
+    }],
+    password: "admin456"
+  },
+  {
+    user_id: "user-5",
+    user_email: "lasantsy@admin.com",
+    user_phone: "",
+    municipality_id: "Antananarivo",
+    citizen: undefined,
+    roles: [{
+      role_id: 100,
+      role_name: "Administrateur",
+      role_slug: "administrateur",
+      application: mockApplications[0],
+      permissions: mockPermissions
+    }],
+    password: "admin123"
+  },
+  {
+    user_id: "user-6",
+    user_email: "rabearisoa@admin.com",
+    user_phone: "",
+    municipality_id: "Fianarantsoa",
+    citizen: undefined,
+    roles: [{
+      role_id: 101,
+      role_name: "SuperAdministrateur",
+      role_slug: "superadministrateur",
+      application: mockApplications[0],
+      permissions: mockPermissions
+    }],
+    password: "admin456"
+  },
+  {
+    user_id: "user-7",
+    user_email: "sissie@caisse.com",
+    user_phone: "",
+    municipality_id: "Toamasina",
+    citizen: undefined,
+    roles: [{
+      role_id: 102,
+      role_name: "Caissier",
+      role_slug: "caissier",
+      application: mockApplications[0],
+      permissions: mockPermissions
+    }],
+    password: "caisse123"
+  },
+  {
+    user_id: "user-8",
+    user_email: "louise@maire.com",
+    user_phone: "",
+    municipality_id: "Mahajanga",
+    citizen: undefined,
+    roles: [{
+      role_id: 103,
+      role_name: "Maire",
+      role_slug: "maire",
+      application: mockApplications[0],
+      permissions: mockPermissions
+    }],
+    password: "maire123"
   }
 ]
 

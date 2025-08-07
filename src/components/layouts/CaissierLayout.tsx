@@ -7,7 +7,7 @@ import {
 } from 'lucide-react';
 import { Navbar, Sidebar } from '../common/frame/IndexExport';
 import { mockNotifications } from '../common/data/mockNotifications';
-import mockUsers from '../common/data/mockUsers';
+import { useUserContext } from '../../context/UserContext';
 import { useTheme } from '../../context/ThemeContext';
 
 type SidebarItem = {
@@ -29,6 +29,7 @@ const CaissierLayout: React.FC = () => {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState<boolean>(false);
   const [activeItem, setActiveItem] = useState<string>('dashboard');
   const { theme } = useTheme();
+  const { users } = useUserContext();
 
   const SIDEBAR_WIDTH_EXPANDED = 256;
   const SIDEBAR_WIDTH_COLLAPSED = 64;
@@ -61,6 +62,8 @@ const CaissierLayout: React.FC = () => {
     ? SIDEBAR_WIDTH_COLLAPSED 
     : SIDEBAR_WIDTH_EXPANDED;
 
+  // Récupérer le caissier depuis UserContext
+  const caissier = users.find(u => u.roles && u.roles.some(r => r.role_name === 'Caissier'));
   return (
     <div className={`flex h-screen ${theme === 'dark' ? 'dark bg-gray-900' : 'bg-gray-50'}`}>
       {/* Sidebar fixe */}
@@ -74,17 +77,12 @@ const CaissierLayout: React.FC = () => {
           onItemClick={handleItemClick}
           isCollapsed={isSidebarCollapsed}
           onToggleCollapse={toggleSidebar}
-          // accentColor="#3b82f6"
         />
       </div>
 
       {/* Contenu principal */}
       <div 
         className="flex-1 flex flex-col transition-all duration-300 ease-in-out"
-        // style={{ 
-        //   marginLeft: `${currentSidebarWidth}px`,
-        //   width: `calc(100% - ${currentSidebarWidth}px)`
-        // }}
       >
         {/* Navbar fixe */}
         <div 
@@ -95,9 +93,9 @@ const CaissierLayout: React.FC = () => {
           }}
         >
           <Navbar
-            userName={(() => { const u = mockUsers.find(u => u.role === 'Caissier'); return u ? `${u.prenom} ${u.nom}`.trim() : ''; })()}
-            userRole={mockUsers.find(u => u.role === 'Caissier')?.role || ''}
-            userAvatar={mockUsers.find(u => u.role === 'Caissier')?.userAvatar || ''}
+            userName={caissier ? (caissier.citizen ? `${caissier.citizen.citizen_name} ${caissier.citizen.citizen_lastname}` : caissier.user_pseudo || caissier.user_email) : ''}
+            userRole={caissier ? (caissier.roles[0]?.role_name || '') : ''}
+            userAvatar={caissier ? (caissier.citizen?.citizen_photo || '') : ''}
             sidebarWidth={currentSidebarWidth}
             isSidebarCollapsed={isSidebarCollapsed}
             notifications={mockNotifications}
