@@ -321,64 +321,64 @@ const mockUsers: User[] = [
     user_phone: "0987654321",
     municipality_id: "yyyy-yyyy-yyyy-yyyy",
     id_citizen: "9fc95ed2-78bd-487a-b699-86e4cc5d6503",
-    citizen: mockCitoyens[1],
+    citizen: mockCitoyens[2],
     roles: [mockRoles[1]]
   },
   {
-  user_id: "user-3",
-  user_pseudo: "LASANTSY",
-  user_email: "lasantsy@gmail.com",
-  user_password: "root1234",
-  user_phone: "0321234567",
-  municipality_id: "aaaa-bbbb-cccc-dddd",
-  id_citizen: "a1c95ed2-1111-487a-b699-86e4cc5d6504",
-  citizen: mockCitoyens[2],
-  roles: [mockRoles[2]] // SuperAdministrateur
-},
-{
-  user_id: "user-4",
-  user_pseudo: "HantaCashier",
-  user_email: "hanta.cashier@example.com",
-  user_password: "cashierpass",
-  user_phone: "0337654321",
-  municipality_id: "eeee-ffff-gggg-hhhh",
-  id_citizen: "b2c95ed2-2222-487a-b699-86e4cc5d6505",
-  citizen: mockCitoyens[3],
-  roles: [mockRoles[3]] // Caissier
-},
-{
-  user_id: "user-5",
-  user_pseudo: "TahinaOrder",
-  user_email: "tahina.order@example.com",
-  user_password: "orderpass",
-  user_phone: "0349876543",
-  municipality_id: "iiii-jjjj-kkkk-llll",
-  id_citizen: "c3c95ed2-3333-487a-b699-86e4cc5d6506",
-  citizen: mockCitoyens[4],
-  roles: [mockRoles[4]] // Ordonnateur
-},
-{
-  user_id: "user-6",
-  user_pseudo: "FaniryManager",
-  user_email: "faniry.manager@example.com",
-  user_password: "managerpass",
-  user_phone: "0323344556",
-  municipality_id: "mmmm-nnnn-oooo-pppp",
-  id_citizen: "d4c95ed2-4444-487a-b699-86e4cc5d6507",
-  citizen: mockCitoyens[5],
-  roles: [mockRoles[5]] // Responsable Communal
-},
-{
-  user_id: "user-7",
-  user_pseudo: "LovaMayor",
-  user_email: "lova.mayor@example.com",
-  user_password: "mayorpass",
-  user_phone: "0331122334",
-  municipality_id: "qqqq-rrrr-ssss-tttt",
-  id_citizen: "e5c95ed2-5555-487a-b699-86e4cc5d6508",
-  citizen: mockCitoyens[6],
-  roles: [mockRoles[6]] // Maire
-}
+    user_id: "user-3",
+    user_pseudo: "LASANTSY",
+    user_email: "lasantsy@admin.com",
+    user_password: "admin123",
+    user_phone: "0321234567",
+    municipality_id: "aaaa-bbbb-cccc-dddd",
+    id_citizen: "a1c95ed2-1111-487a-b699-86e4cc5d6504",
+    citizen: mockCitoyens[3],
+    roles: [mockRoles[2]] // SuperAdministrateur
+  },
+  {
+    user_id: "user-4",
+    user_pseudo: "HantaCashier",
+    user_email: "hanta.cashier@example.com",
+    user_password: "cashierpass",
+    user_phone: "0337654321",
+    municipality_id: "eeee-ffff-gggg-hhhh",
+    id_citizen: "b2c95ed2-2222-487a-b699-86e4cc5d6505",
+    citizen: mockCitoyens[4],
+    roles: [mockRoles[3]] // Caissier
+  },
+  {
+    user_id: "user-5",
+    user_pseudo: "TahinaOrder",
+    user_email: "tahina.order@example.com",
+    user_password: "orderpass",
+    user_phone: "0349876543",
+    municipality_id: "iiii-jjjj-kkkk-llll",
+    id_citizen: "c3c95ed2-3333-487a-b699-86e4cc5d6506",
+    citizen: mockCitoyens[5],
+    roles: [mockRoles[4]] // Ordonnateur
+  },
+  {
+    user_id: "user-6",
+    user_pseudo: "FaniryManager",
+    user_email: "faniry.manager@example.com",
+    user_password: "managerpass",
+    user_phone: "0323344556",
+    municipality_id: "mmmm-nnnn-oooo-pppp",
+    id_citizen: "d4c95ed2-4444-487a-b699-86e4cc5d6507",
+    citizen: mockCitoyens[6],
+    roles: [mockRoles[5]] // Responsable Communal
+  },
+  {
+    user_id: "user-7",
+    user_pseudo: "LovaMayor",
+    user_email: "lova.mayor@example.com",
+    user_password: "mayorpass",
+    user_phone: "0331122334",
+    municipality_id: "qqqq-rrrr-ssss-tttt",
+    id_citizen: "e5c95ed2-5555-487a-b699-86e4cc5d6508",
+    citizen: mockCitoyens[7],
+    roles: [mockRoles[6]] // Maire
+  }
 
 ]
 

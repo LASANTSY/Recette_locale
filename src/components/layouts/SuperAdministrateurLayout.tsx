@@ -108,7 +108,15 @@ const SuperAdministrateurLayout: React.FC = () => {
           style={{ height: `${NAVBAR_HEIGHT}px` }}
         >
           <Navbar
-            userName={user ? `${user.prenom} ${user.nom}`.trim() : ""}
+            userName={
+              user?.nom && user?.prenom
+                ? `${user.prenom} ${user.nom}`.trim()
+                : user?.userName
+                  ? user.userName
+                  : user?.citizen
+                    ? `${user.citizen.citizen_name} ${user.citizen.citizen_lastname}`.trim()
+                    : ""
+            }
             userRole={user?.role || ""}
             userAvatar={user?.userAvatar}
             sidebarWidth={!isMobile ? currentSidebarWidth : 0}
